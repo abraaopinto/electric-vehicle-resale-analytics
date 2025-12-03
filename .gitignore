@@ -205,3 +205,14 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Ignorar pastas de dados grandes e arquivos de log
+# É uma prática comum NÃO versionar dados brutos (raw data) nem resultados de saída grandes
+#data/inputs/
+data/outputs/
+*.log
+
+# Ignorar modelos treinados (opcional, dependendo do seu fluxo de trabalho)
+# Se você versiona modelos em um sistema de controle de versão de modelos (como DVC, MLflow),
+# você pode querer ignorá-los no Git.
+models/
