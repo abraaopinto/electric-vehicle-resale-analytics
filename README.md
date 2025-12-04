@@ -86,3 +86,69 @@ Se não quiser a subpasta `inputs/`, basta manter o arquivo em `data/electric_ve
 e ajustar o caminho no notebook.
 
 ---
+## 4. Como executar o projeto
+
+### 4.1. Clonar o repositório
+
+```bash
+git clone https://github.com/abraaopinto/electric-vehicle-resale-analytics.git
+cd electric-vehicle-resale-analytics
+```
+
+> Ajuste a URL se o repositório estiver em outra conta ou organização.
+
+### 4.2. Criar e ativar ambiente virtual (opcional, mas recomendado)
+
+```bash
+python -m venv venv
+
+# Windows
+.\venv\Scriptsctivate
+
+# Linux / macOS
+source venv/bin/activate
+```
+
+### 4.3. Instalar dependências
+
+Na raiz do repositório:
+
+```bash
+pip install -q -r requirements.txt
+```
+
+O arquivo `requirements.txt` contém as bibliotecas necessárias para rodar o notebook
+(pandas, numpy, matplotlib, seaborn, scikit-learn, statsmodels, jupyter, joblib, etc.).
+
+### 4.4. Garantir que o dataset está no local correto
+
+Coloque o arquivo `electric_vehicle_analytics(in).csv` em:
+
+```text
+data/inputs/electric_vehicle_analytics(in).csv
+```
+
+ou, alternativamente, em:
+
+```text
+data/electric_vehicle_analytics(in).csv
+```
+
+Se o nome/caminho forem diferentes, ajuste a constante `DATA_INPUT_PATH`
+na célula de configuração do notebook.
+
+### 4.5. Rodar o Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+Depois, abra o arquivo:
+
+```text
+notebooks/ev_resale_analysis.ipynb
+```
+
+e execute as células **na ordem**, do topo até o final.
+
+---
