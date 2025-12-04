@@ -61,3 +61,28 @@ renomeie-o para `electric_vehicle_analytics(in).csv` e coloque na pasta correta,
 ajuste a constante `DATA_INPUT_PATH` no notebook.
 
 ---
+## 3. Estrutura do repositório
+
+Estrutura recomendada:
+
+```text
+electric-vehicle-resale-analytics/
+├─ data/
+│  ├─ inputs/
+│  │  └─ electric_vehicle_analytics(in).csv
+│  └─ (outros arquivos brutos, se necessário)
+├─ data_outputs/
+│  ├─ figures/      # gráficos gerados
+│  ├─ reports/      # CSVs de indicadores, correlações, etc.
+│  └─ models/       # modelo treinado (.joblib)
+├─ notebooks/
+│  └─ ev_resale_analysis.ipynb
+├─ README.md
+├─ requirements.txt
+└─ .gitignore
+```
+
+Se não quiser a subpasta `inputs/`, basta manter o arquivo em `data/electric_vehicle_analytics(in).csv`
+e ajustar o caminho no notebook.
+
+---
