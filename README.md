@@ -103,7 +103,7 @@ cd electric-vehicle-resale-analytics
 python -m venv venv
 
 # Windows
-.\venv\Scriptsctivate
+.\venv\Scripts\activate
 
 # Linux / macOS
 source venv/bin/activate
@@ -152,3 +152,93 @@ notebooks/ev_resale_analysis.ipynb
 e execute as células **na ordem**, do topo até o final.
 
 ---
+
+## 5. Organização lógica do notebook
+
+O notebook `ev_resale_analysis.ipynb` está organizado em **Passos**, seguindo
+o fluxo natural de um projeto de ciência de dados aplicado ao negócio:
+
+### Passo 1 — Preparação do Ambiente
+
+- Instalação de dependências (quando necessário);
+- Imports das bibliotecas;
+- Definição de constantes (caminhos, semente aleatória, parâmetros gerais);
+- Funções utilitárias com docstrings.
+
+### Passo 2 — Parte #1: EDA e Comparação de Grupos
+
+- Carregamento do dataset e resumo inicial (`summarize_dataframe`);
+- Análise de valores ausentes;
+- Distribuição de variáveis numéricas (histogramas + boxplots);
+- Distribuição de variáveis categóricas (gráficos de barras);
+- Comparação de grupos em relação a `Resale_Value_USD`:
+  - Fabricante (`Make`)
+  - Região (`Region`)
+  - Tipo de veículo (`Vehicle_Type`)
+  - Tipo de uso (`Usage_Type`)
+- Testes ANOVA (`Resale_Value_USD ~ C(grupo)`);
+- Correlações de Pearson entre a variável-alvo e as demais variáveis numéricas;
+- Seção textual com **insights da Parte 1**.
+
+### Passo 3 — Parte #2: Tendências de Mercado ao Longo do Tempo
+
+- Agregação anual por `Year`:
+  - `avg_resale_value`, `avg_co2_saved`,
+  - custos médios (`maintenance`, `insurance`, `charging`),
+  - `avg_battery_health`, `avg_mileage`, `vehicle_count`.
+- Gráficos de linha mostrando a evolução dos indicadores;
+- Regressões lineares simples de cada indicador em função do ano;
+- Tabela com inclinação, p-valor e R² de cada tendência;
+- Seção textual com **insights de tendências de mercado**.
+
+### Passo 4 — Parte #3: Modelo Preditivo
+
+- Preparação de features (numéricas + categóricas) e variável alvo (`Resale_Value_USD`);
+- Pré-processador com:
+  - imputação de medianas + `StandardScaler` para numéricas;
+  - imputação da moda + `OneHotEncoder` para categóricas.
+- Treinamento e avaliação de:
+  - `LinearRegression`
+  - `RandomForestRegressor`
+  - `GradientBoostingRegressor`
+- Métricas:
+  - RMSE (teste + cross-validation),
+  - MAE,
+  - R².
+- Ensemble simples com média das previsões dos modelos;
+- Importância de variáveis (feature importance) do melhor modelo de árvore;
+- Seção final com **conclusões e recomendações para o negócio**.
+
+---
+
+## 6. Ferramentas e bibliotecas principais
+
+- **Python 3.8+**
+- Análise e manipulação de dados:
+  - `pandas`, `numpy`
+- Visualização:
+  - `matplotlib`, `seaborn`
+- Estatística e regressão:
+  - `statsmodels`
+- Machine Learning:
+  - `scikit-learn`
+- Ambiente:
+  - `jupyter`, `joblib`
+
+---
+
+## 7. Como este projeto atende aos critérios de avaliação
+
+- ✅ Repositório estruturado, com `README`, `requirements` e notebook principal;
+- ✅ Notebook único que cobre:
+  - EDA robusta e comparação de grupos;
+  - Análise temporal de indicadores e tendências;
+  - Modelos preditivos com avaliação quantitativa e interpretação;
+- ✅ Uso de visualizações claras, comentários e docstrings;
+- ✅ Seções finais dedicadas a **insights** e **recomendações de negócio**, conectando
+  os resultados técnicos às decisões estratégicas relacionadas ao valor de revenda
+  de veículos elétricos.
+
+---
+
+Autor: **Abraão dos Santos Pinto**
